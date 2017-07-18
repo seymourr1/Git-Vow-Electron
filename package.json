@@ -1,0 +1,11 @@
+{
+  "name": "git-vow",
+  "version": "1.0.0",
+  "description": "git-vow in electron",
+  "main": "index.js",
+  "scripts": {
+  	"start": "electron main.js"
+  },
+  "author": "RobertSeymour\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D",
+  "license": "ISC"
+}
