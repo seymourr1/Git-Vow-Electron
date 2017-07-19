@@ -2,12 +2,18 @@
 <html>
 <head>
 	<title></title>
+	<link rel="stylesheet" type="text/css" href="bear.css">
 </head>
 <body>
 	<h1>Choose a file</h1>
-	<script>require('./bear.js')</script>
-	<input type="file" id="file-input" />
 	<h3>Contents of the file:</h3>
 	<pre id="file-content"></pre>
+	<div id="line-container">
+		<!-- Highlighted Lines will be inserted here -->
+	</div>
+	<input type="file" id="file-input" />
+	<button type="button" onclick = "selectTextareaLine(4, 7)">Highlight Lines</button>
+	<script type="text/javascript" src = "./highlight.js"></script>
+	<script type="text/javascript" src = "./bear.js"></script>
 </body>
 </html>

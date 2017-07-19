@@ -1,4 +1,3 @@
-
 function readSingleFile(e) {
   var file = e.target.files[0];
   if (!file) {
@@ -21,3 +20,14 @@ var el = document.getElementById('file-input');
 if(el){
   el.addEventListener('change', readSingleFile, false);
 }
+
+document.getElementById('file-input').addEventListener('change',
+  function () {
+    var fr = new FileReader();
+    fr.onload = function () {
+      document.getElementById('file-content').textContent = this.result;
+    };
+    fr.readAsText(this.files[0]);
+  }
+  );
+// HELLO 
