@@ -12,7 +12,15 @@
 		<!-- Highlighted Lines will be inserted here -->
 	</div>
 	<input type="file" id="file-input" />
-	<button type="button" onclick = "selectTextareaLine(4, 7)">Highlight Lines</button>
+	<div>
+		<input type="text" id="firstLine" value="Enter Start Line">
+		<input type="text" id="lastLine" value="Enter Last Line">
+		<input type="text" id="singleLine" value="Singe Lines (comma)">
+		<button type="button" onclick = "selectTextareaLine()">Highlight Lines</button>
+		<button type="button" onclick = "startOver()">Start Over</button>
+	</div>
+
+	<!-- <button type="button" onclick = "selectTextareaLine()">Highlight Lines</button> -->
 	<script type="text/javascript" src = "./highlight.js"></script>
 	<script type="text/javascript" src = "./bear.js"></script>
 </body>

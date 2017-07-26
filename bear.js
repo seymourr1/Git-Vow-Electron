@@ -12,7 +12,10 @@ function readSingleFile(e) {
 }
 
 function displayContents(contents) {
-  var element = document.getElementById('file-content');
+  var display = document.getElementById('line-container');
+  display.innerHTML = "";
+  element = document.getElementById('file-content');
+  element.style.display = 'block'
   element.textContent = contents;
 }
 
@@ -30,4 +33,4 @@ document.getElementById('file-input').addEventListener('change',
     fr.readAsText(this.files[0]);
   }
   );
-// HELLO 
+// HELLO
