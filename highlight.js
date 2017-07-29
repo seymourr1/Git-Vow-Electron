@@ -45,10 +45,28 @@ function getLines(){ //Make sure to account for prefilled
 }
 
 function escapeHtml(unsafe) {
-    return unsafe
-         .replace(/&/g, "&amp;")
-         .replace(/</g, "&lt;")
-         .replace(/>/g, "&gt;")
-         .replace(/"/g, "&quot;")
-         .replace(/'/g, "&#039;");
- }
+  return unsafe
+  .replace(/&/g, "&amp;")
+  .replace(/</g, "&lt;")
+  .replace(/>/g, "&gt;")
+  .replace(/"/g, "&quot;")
+  .replace(/'/g, "&#039;");
+}
+
+function highlightSingleLine(line, arg) {
+  if(arg == "new"){
+    if(line.classList == "clearedLine") {
+      line.classList.add("highlight");
+      line.classList.toggle("clearedLine");
+    }
+    else {
+      line.classList.toggle("highlight");
+    }
+  }
+  else {
+    line.classList.toggle("highlight");
+  }
+  //  line.classList.remove("")
+  //  line.classList.add("highlight");
+  debugger;
+}

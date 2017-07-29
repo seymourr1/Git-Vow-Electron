@@ -6,12 +6,13 @@
 </head>
 <body>
 	<h1>Choose a file</h1>
-	<h3>Contents of the file:</h3>
+	<h3>Click the lines you wish to edit:</h3>
 	<pre id="file-content"></pre>
 	<div id="line-container">
 		<!-- Highlighted Lines will be inserted here -->
 	</div>
 	<input type="file" id="file-input" />
+	<div>Or Enter the numbers Manually</div>
 	<div>
 		<input type="text" id="firstLine" value="Enter Start Line">
 		<input type="text" id="lastLine" value="Enter Last Line">
@@ -19,6 +20,7 @@
 		<button type="button" onclick = "selectTextareaLine()">Highlight Lines</button>
 		<button type="button" onclick = "startOver()">Start Over</button>
 	</div>
+	<button type="button" onclick="displayArray()"> Array </button>
 
 	<!-- <button type="button" onclick = "selectTextareaLine()">Highlight Lines</button> -->
 	<script type="text/javascript" src = "./highlight.js"></script>

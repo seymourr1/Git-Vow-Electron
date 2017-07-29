@@ -24,12 +24,12 @@ function displayContents(contents) {
   lines = contents.split("\n");
   for (var i = 0; i < lines.length; i++) {
     element.innerHTML +=
-    // '<pre class = "clearedLine" onmousedown = "storeNumber(this)" onmouseup = "storeSecondNumber(this)" line-number = '+ (i+1) +'>' + (i+1) + '    ' + lines[i] +'</pre>';
-    '<pre class = "clearedLine" line-number = '+ (i+1) +'>' + (i+1) + '    ' + lines[i] +'</pre>';
+    '<pre class = "clearedLine" onmousedown = "storeNumber(this)" line-number = '+ (i+1) +'>' + (i+1) + '    ' + lines[i] +'</pre>';
+    // '<pre class = "clearedLine" line-number = '+ (i+1) +'>' + (i+1) + '    ' + lines[i] +'</pre>';
   }
-  //element.textContent = contents;
+
 }
-document.addEventListener("selectionchange", storeNumber(this));
+//document.addEventListener("selectionchange", storeNumber(this));
 
 var el = document.getElementById('file-input');
 if(el){
@@ -46,10 +46,35 @@ function escapeHtml(unsafe) {
 }
 
 function storeNumber(line) {
-  debugger;
-  chosenLines.push(line.getAttribute("line-number"));
-  chosenLines = chosenLines.map(Number);
   // debugger;
+
+  var lineNumber = parseInt(line.getAttribute("line-number"));
+  if(chosenLines.contains(lineNumber) == true) {
+    var index = chosenLines.indexOf(lineNumber);
+    delete chosenLines[index];
+    highlightSingleLine(line, "old");
+    debugger;
+  }
+  else {
+    chosenLines.push(lineNumber);
+    chosenLines = chosenLines.map(Number);
+    highlightSingleLine(line, "new");
+  }
+  // debugger;
+}
+
+Array.prototype.contains = function(obj) {
+  var i = this.length;
+  while (i--) {
+    if (this[i] == obj) {
+      return true;
+    }
+  }
+  return false;
+}
+
+function displayArray() {
+  alert(chosenLines);
 }
 
 // function storeSecondNumber(line) {
