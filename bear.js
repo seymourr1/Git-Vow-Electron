@@ -24,7 +24,7 @@ function displayContents(contents) {
   lines = contents.split("\n");
   for (var i = 0; i < lines.length; i++) {
     element.innerHTML +=
-    '<pre class = "clearedLine" line-number = '+ (i+1) +'>' + (i+1) + '    ' + lines[i] +'</pre>';
+    '<span class = "clearedLine" onmouseup = "highlight(event)" line-number = '+ (i+1) + '>' + (i+1) + '    ' + lines[i] +'</span>';
   }
 }
 
@@ -43,15 +43,79 @@ function escapeHtml(unsafe) {
 }
 
 function displayArray() {
+  chosenLines = [];
   var container = document.getElementById("file-content");
   var children = container.childNodes;
   for (var i = 0; i< children.length; i++){
     var node = children[i];
+    debugger;
     if(node.classList.contains("highlight")){
       var lineNumber = parseInt(node.getAttribute("line-number"));
       chosenLines.push(lineNumber);
     }
   }
+}
+
+function highlight(event) {
+  selected = window.getSelection().getRangeAt(0);
+  var startNode = selected.startContainer.parentNode;
+  var endNode = selected.endContainer.parentNode;
+  var lines = document.querySelectorAll("span");
+  var started = false;
+  var ended = false;
+  lines.forEach(function(e) {
+    if (e === startNode)
+      started = true;
+    if (started && !ended) {
+      if (event.shiftKey)
+        e.classList.remove("highlight");
+
+      else
+        e.classList.add("highlight");
+    }
+    if (e === endNode)
+      ended = true;
+  });
+  window.getSelection().empty();
+}
+
+function getFormattedSelection() {
+  var lines = document.querySelectorAll("span");
+  debugger;
+  var indivLines = [];
+  var linesInBetween = [];
+  var startRange = 0;
+  var endRange = 0;
+  var arrLength = lines.length;
+  var pushToSelection = function(startRange, endRange) {
+    if (startRange === endRange)
+      indivLines.push(startRange);
+    else
+      linesInBetween.push(startRange + "-" + endRange);
+  }
+  lines.forEach(function(e, index, arr) {
+    if (e.classList.contains("highlight")) {
+      if (startRange === 0) {
+        startRange = index + 1;
+        endRange = index + 1;
+      } else
+        endRange = index + 1;
+
+      if (index === arrLength - 1) {
+        endRange = index + 1;
+        pushToSelection(startRange, endRange);
+      }
+    } else {
+      if (startRange !== 0) {
+        pushToSelection(startRange, endRange);
+      }
+      startRange = 0;
+    }
+  });
+  return {
+    "lines": indivLines,
+    "linesInBetween": linesInBetween
+  };
 }
 
 // function storeNumber(line) {

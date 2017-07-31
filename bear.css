@@ -5,3 +5,6 @@
 .clearedLine {
 	/*line-height: 15%;*/
 }
+.border {
+  border-style: solid;
+}

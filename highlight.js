@@ -5,17 +5,16 @@ var singleLines;
 function selectTextareaLine() {
   var container = document.getElementById("file-content");
   var children = container.childNodes;
-  debugger;
+  //debugger;
   getLines();
   for (var i = firstLine; i <= secondLine; i++) {
     var node = children[i];
+    // debugger;
     node.classList.remove("highlight");
     highlightSingleLine(node);
-    debugger;
   }
   for(var i = 0; i < singleLines.length; i++) {
     var val = singleLines[i];
-    debugger;
     highlightSingleLine(children[val]);
   }
 }
@@ -32,6 +31,7 @@ function getLines(){ //Make sure to account for prefilled
 }
 
 function highlightSingleLine(line) {
+  debugger;
   line.classList.add("highlight");
   line.classList.remove("clearedLine");
 }

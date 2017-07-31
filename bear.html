@@ -5,12 +5,15 @@
 	<link rel="stylesheet" type="text/css" href="bear.css">
 </head>
 <body>
+	<div>
+	</div>
+	<!-- <script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js"></script> -->
 	<h1>Choose a file</h1>
 	<h3>Click the lines you wish to edit:</h3>
-	<pre id="file-content"></pre>
-	<div id="line-container">
+	<pre id="file-content" class = "border" ></pre>
+	<code id="line-container" >
 		<!-- Highlighted Lines will be inserted here -->
-	</div>
+	</code>
 	<input type="file" id="file-input" />
 	<div>Or Enter the numbers Manually</div>
 	<div>
@@ -23,6 +26,7 @@
 	<button type="button" onclick="displayArray()"> Array </button>
 
 	<!-- <button type="button" onclick = "selectTextareaLine()">Highlight Lines</button> -->
+	<script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js"></script>
 	<script type="text/javascript" src = "./highlight.js"></script>
 	<script type="text/javascript" src = "./bear.js"></script>
 </body>
