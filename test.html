@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>test</title>
+	<style type="text/css">
+		.highlighted {
+			background-color: yellow;
+		}
+	</style>
+</head>
+<body>
+<div>
+<pre>dsfadsfa</pre>
+<pre>fdsafdfasdfd</pre>
+<pre>dsfadsfa</pre>
+<pre>fdsafdfasdfd</pre>
+<pre>dsfadsfa</pre>
+<pre>fdsafdfasdfd</pre>
+<pre>dsfadsfa</pre>
+<pre>fdsafdfasdfd</pre>
+<pre>dsfadsfa</pre>
+<pre>fdsafdfasdfd</pre>
+<pre>dsfadsfa</pre>
+<pre>fdsafdfasdfd</pre>
+<pre>dsfadsfa</pre>
+<pre>fdsafdfasdfd</pre>
+<pre>dsfadsfa</pre>
+<pre>fdsafdfasdfd</pre>
+<pre>dsfadsfa</pre>
+<pre>fdsafdfasdfd</pre>
+</div>
+
+</body>
+<script type="text/javascript">
+	document.onmouseup = function(event) {
+		selected = window.getSelection().getRangeAt(0);
+		var startNode = selected.startContainer.parentNode;
+		var endNode = selected.endContainer.parentNode;
+		var lines = document.querySelectorAll("pre");
+		var started = false;
+		var ended = false;
+		lines.forEach(function(e) {
+			if (e === startNode)
+				started = true;
+			if (started && !ended) {
+				if (event.shiftKey)
+					e.classList.remove("highlighted");
+				else
+					e.classList.add("highlighted");
+			}
+			if (e === endNode)
+				ended = true;
+		});
+		window.getSelection().empty();
+	}
+
+	function getFormattedSelection() {
+		var lines = document.querySelectorAll("pre");
+		var indivLines = [];
+		var linesInBetween = [];
+		var startRange = 0;
+		var endRange = 0;
+		var arrLength = lines.length;
+		var pushToSelection = function(startRange, endRange) {
+			if (startRange === endRange)
+				indivLines.push(startRange);
+			else
+				linesInBetween.push(startRange + "-" + endRange);
+		}
+		lines.forEach(function(e, index, arr) {
+			if (e.classList.contains("highlighted")) {
+				if (startRange === 0) {
+					startRange = index + 1;
+					endRange = index + 1;
+				} else
+					endRange = index + 1;
+
+				if (index === arrLength - 1) {
+					endRange = index + 1;
+					pushToSelection(startRange, endRange);
+				}
+			} else {
+				if (startRange !== 0) {
+					pushToSelection(startRange, endRange);
+				}
+				startRange = 0;
+			}
+		});
+		return {
+			"lines": indivLines,
+			"linesInBetween": linesInBetween
+		};
+	}
+</script>
+</html>
