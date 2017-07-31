@@ -1,0 +1,3 @@
+[submodule "git-promise-wrapper"]
+	path = git-promise-wrapper
+	url = git@github.com:blghns/git-promise-wrapper.git
