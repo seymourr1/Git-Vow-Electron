@@ -118,6 +118,10 @@ function getFormattedSelection() {
   };
 }
 
+$( "#python" ).click(function() {
+  alert( "Handler for .click() called." );
+});
+
 // function storeNumber(line) {
 //   // debugger;
 //
