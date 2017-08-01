@@ -1,5 +1,44 @@
-var chosenLines = [];
 
+var chosenLines = [];
+var PythonShell = require('python-shell');
+const {dialog} = require('electron').remote;
+const remote = require('electron').remote;
+const path = require('path');
+
+var gitPath;
+
+var button = document.createElement('button')
+button.textContent = 'Close'
+button.addEventListener('click', () => {
+	var window = remote.getCurrentWindow();
+  window.close();
+})
+var element = document.getElementById("close-pad");
+element.appendChild(button);
+
+function choseDirectory(){
+  gitPath = dialog.showOpenDialog({
+      properties: ['openDirectory']
+  })[0];
+}
+
+//INCOMPLETE
+function runPython(){
+  debugger;
+  var options = {
+  mode: 'text',
+  pythonOptions: ['-u'],
+  scriptPath: gitPath,
+  // args: ['value1', 'value2', 'value3']
+};
+
+PythonShell.run( path.join(__dirname,'hello.py'), options, function (err, results) {
+  if (err) throw err;
+  // results is an array consisting of messages collected during execution
+  console.log('results: %j', results);
+});
+}
+//INCOMPLETES
 
 function readSingleFile(e) {
   var file = e.target.files[0];
@@ -118,9 +157,6 @@ function getFormattedSelection() {
   };
 }
 
-$( "#python" ).click(function() {
-  alert( "Handler for .click() called." );
-});
 
 // function storeNumber(line) {
 //   // debugger;

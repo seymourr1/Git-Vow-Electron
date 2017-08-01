@@ -6,7 +6,9 @@
 </head>
 <body>
 	<div>
-		<button type = "button" id = "python">Hello</button>
+		<!-- <button type = "button" id = "python" onclick="runPython()">Python Test</button> -->
+		<!-- <button type = "button" id = "directory" onclick="choseDirectory()">Get Directory</button> -->
+		<input type = "text" id = "branchName" placeholder="Promise Branch Name">
 	</div>
 	<!-- <script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js"></script> -->
 	<h1>Choose a file</h1>
@@ -17,18 +19,22 @@
 	</code>
 	<input type="file" id="file-input" />
 	<div>Or Enter the numbers Manually</div>
-	<div>
+	<div id = "buttons" class = "button">
 		<input type="text" id="firstLine" placeholder="Enter First Line">
 		<input type="text" id="lastLine" placeholder="Enter Last Line">
 		<input type="text" id="singleLine" placeholder="Enter Single Lines (comma)">
 		<button type="button" onclick = "selectTextareaLine()">Highlight Lines</button>
-		<button type="button" onclick = "startOver()">Start Over</button>
+		<!-- <button type="button" onclick = "startOver()">Start Over</button> -->
+		<!-- <button type="button" onclick="displayArray()"> Array </button> -->
 	</div>
-	<button type="button" onclick="displayArray()"> Array </button>
+	<div id = "close-pad">
+	</div>
+
+
 
 	<!-- <button type="button" onclick = "selectTextareaLine()">Highlight Lines</button> -->
-	<script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js"></script>
-	<script type="javascript/jquery" src = "./highlight.js"></script>
+	<!-- <script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js"></script> -->
+	<script type="text/javascript" src = "./highlight.js"></script>
 	<script type="text/javascript" src = "./bear.js"></script>
 </body>
 </html>
